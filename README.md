@@ -1,6 +1,6 @@
 # Software Requirements Specification
 ## For  EMOF
-Prepared by Brassat Alexandru, Duca Alexandru, Popa Stefan
+Prepared by Brassat Alexandru, Cojocaru George, Popa Stefan, Rusu Vlad
 
 Link-ul videoclipului: https://youtu.be/FASqCQmM0mc
 
@@ -110,15 +110,15 @@ The user must be logged in.
 #### 4.5.1 Description
 The User will be able to view their drafts, published or closed forms.
 #### 4.5.2 Stimulus/Response Sequences
-The User will interact with the "admin" page, which will list all of their forms. Those can be grouped in the three categories mentioned above, and can be sorted by category by using a series of buttons on the left side of the page. For all forms, the user will be able to perform certain actions (such as edit, publish, close, view statistics, delete), according to the state the forms are in (draft, active, closed). 
+The User will interact with the "admin" page, which will list all of their forms. Those can be grouped in the three categories mentioned above, and can be sorted by category by using a series of buttons on the left side of the page. For all forms, the user will be able to perform certain actions (such as edit, publish, close, view statistics, delete), according to the state the forms are in (draft, active, closed).
 #### 4.5.3 Functional Requirements
 The user must be logged in to view their forms.
 
 ### 4.6 Explore Forms
 #### 4.6.1 Description
-All users (anonymous or not) will be able to participate in public forms made by other users. The forms will be grouped by multiple criteria. 
+All users (anonymous or not) will be able to participate in public forms made by other users. The forms will be grouped by multiple criteria.
 #### 4.6.2 Stimulus/Response Sequences
-The User will browse the page and, when a certain form catches their attention, will be able to join the form. 
+The User will browse the page and, when a certain form catches their attention, will be able to join the form.
 #### 4.6.3 Functional Requirements
 In order for this page to be functional, it requires a number of public forms. In the case when there are none, an informative message will be shown.
 
@@ -154,3 +154,32 @@ A planned future enhancement for our application is the development of a Natural
 An upcoming enhancement that we're planning to add to our system is a mailing microservice. This microservice will be responsible for all email-related functionalities, including sending notifications, account activation instructions, password recovery instructions, and user updates.
 ### 6.2 IP - Session Mapping using Redis on the Gateway
 We are planning to add an IP - Session mapping feature using Redis on our Gateway service. This will enhance the security and performance of our system by efficiently managing user sessions and controlling the rate of requests.
+
+## Cloud services used
+### 1. Azure
+#### 1. App Service
+Provides reliable hosting for the application.
+#### 2. PostgreSQL Database
+Efficient storage for large amounts of data. - Used to store user accounts, created forms, form responses.
+#### 3. Redis cache
+Reduces the time required to identify the user session.
+#### 4. Email Communication Service
+Alerts the maintainance team if the application goes down so that the problems can be repaired in the shortest time.
+### 2. Google Cloud
+#### 1. Google SDK
+Used for deploying and configuring the Google Cloud environment.
+#### 2. Cloud Function / Cloud run
+Written using NodeJS, provides OpenAI API integration which is used for processing textual input in order to identify the emotions which the user wants to express.
+
+## Customer Benefits
+1. Ease of Participation: Customers can provide feedback without the hassle of creating an account, making the process quick and straightforward.
+2. Anonymity: The assurance of anonymity encourages honest and candid feedback, allowing customers to express their true feelings without fear of repercussions.
+3. Enhanced Service and Product Improvements: By sharing emotional feedback, customers contribute to tangible improvements in products and services they use, leading to better overall experiences.
+4. User-Friendly Interface: The application is designed to be intuitive and easy to use, ensuring customers can effortlessly provide their input.
+
+## Other existing solutions
+1. Typeform: This is known for its user-friendly interface and interactive feedback forms. It allows users to create customized forms with various question types.
+2. Google Forms: This is a web-based application for creating surveys, quizzes, and data collection forms.
+
+## Business Canva
+![image](https://github.com/AlexD29/EMOF-WEB-Project/assets/38299145/11c76d74-27cc-4029-b619-b142785f11ee)

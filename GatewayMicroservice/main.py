@@ -56,6 +56,13 @@ class GatewayRequestHandler(http.server.SimpleHTTPRequestHandler):
     def handle_request(self, request_method):
         url = urllib.parse.urlparse(self.path)
         segments = url.path.split('/')[1:]  # split by / and remove the first empty string
+
+        if len(segments) == 0 or len(segments[0]) == 0: # daca am intrat pe emof.com/
+            self.send_response(301)
+            self.send_header('Location','/explore')
+            self.end_headers()
+            return
+
         service = segments[0]
 
         #get cookie data
