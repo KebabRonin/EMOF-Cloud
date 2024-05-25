@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create Formular</title>
+  <link href="../../emof.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="/pictures/icon.png" />
+</head>
+
+<body>
+  <div id="container">
+    <div class="landing-section-header">
+      <header id="landing-header-id" class="landing-header" role="banner" itemscope="">
+        <div class="landing-header-elements">
+          <a href="/admin/all_forms.html" class="logo-link">
+            <img alt="" src="/pictures/logo.png" class="logo_landing" />
+          </a>
+          <nav id="landing-header_menu" class="landing-header_menu landing-header_menu--microsite"
+            aria-label="Navigation" data-translated="1" itemscope="">
+            <ul id="menu-landing-header_menu-left" class="landing-header_menu-left">
+              <li id="menu-item-92366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92366">
+                <a><span class="your-formulars">Create Formular</span></a>
+              </li>
+              <li id="menu-item-92365"
+                class="back-button menu-item menu-item-type-custom menu-item-object-custom menu-item-92365">
+                <a href="../../admin/all_forms.html" data-tracking-id="sign-up-top-bar" itemprop="url">Back</a>
+              </li>
+            </ul>
+            <ul class="landing-header_menu-right first-in-focus">
+              <li class="icon-before-nav">
+                <a><span class="menu-item-text">AlexD29</span></a>
+              </li>
+              <li class="landing-button logout_button">
+                <a href="/login.html" itemprop="url">Log out</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <div id="questions-container">
+      <div class="flex-container-centered">
+        <button id="add-btn" class="rounded-div drop-shadow-effect" onclick="addQuestion()">
+          + Add question
+        </button>
+        <button id="del-btn" class="rounded-div drop-shadow-effect" onclick="deleteQuestion()">
+          - Delete question
+        </button>
+      </div>
+
+      <div id="next-btn" class="rounded-div" onclick="create()">
+        <a> Done </a>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+
+</html>

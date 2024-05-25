@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Formular</title>
+    <link href="emof.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="/admin-forms-microservice/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div class="landing-section-header">
+      <header
+        id="landing-header-id"
+        class="landing-header"
+        role="banner"
+        itemscope=""
+      >
+        <div class="landing-header-elements">
+          <a href="/admin/" class="logo-link">
+            <img alt="" src="/admin-forms-microservice/logo.png" class="logo_landing" />
+          </a>
+          <nav
+            id="landing-header_menu"
+            class="landing-header_menu landing-header_menu--microsite"
+            aria-label="Navigation"
+            data-translated="1"
+            itemscope=""
+          >
+            <ul
+              id="menu-landing-header_menu-left"
+              class="landing-header_menu-left"
+            >
+              <li
+                id="menu-item-92366"
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92366"
+              >
+                <a><span class="your-formulars">Create Form</span></a>
+              </li>
+              <li id="menu-item-92365"
+                class="back-button menu-item menu-item-type-custom menu-item-object-custom menu-item-92365">
+                <a href="/admin/" data-tracking-id="sign-up-top-bar" itemprop="url">Back</a>
+              </li>
+            </ul>
+            <ul class="landing-header_menu-right first-in-focus">
+              <li class="icon-before-nav">
+                <a><span class="menu-item-text">${{{user_name}}}</span></a>
+              </li>
+              <li class="landing-button logout_button">
+                <a id="logout-btn" href="/authentication/logout" itemprop="url">Log out</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </div>
+
+    <div id="container">
+      <div id="centered-box" class="centered-box">
+        <h2 id="create-title">Create Form</h2>
+        <div class="image-upload-container">
+          <div class="image-preview">
+            <img id="preview-image" src="">
+            <span id="placeholder-text" class="placeholder-text">Form Image</span>
+          </div>
+          <label for="image-upload-input" class="image-label">
+            <span class="custom-file-input">Choose Picture</span>
+          </label>
+          <input type="file" id="image-upload-input" class="form-file-input" onchange="previewImage(event)" accept="image/*" />
+          <button id="remove-image" class="remove-image-button" onclick="removeImage()">Remove</button>
+        </div>
+        
+        <form id="first-page-form">
+          <div class="form-fields">
+            <label class="form-label" for="title">Title</label>
+            <input
+              id="form-name-input"
+              class="question-input"
+            />
+            <label class="form-label" for="title">Description</label>
+            <input
+              id="form-description-input"
+              class="question-input"
+            />
+            <label class="form-label" for="title">Ending Message</label>
+            <input
+              id="form-ending-input"
+              class="question-input"
+            />
+            <label class="form-label" for="title">Tags Separated by commas(Optional)</label>
+            <input
+              id="form-tags-input"
+              class="question-input"
+            />
+          </div>
+        </form>
+        <button id="add-questions-btn">Add Questions</button>
+      </div>
+
+      <div id="questions-container">
+        <div id="questions-box">
+          <h2 id="questions-title">Questions</h2>
+          <label class="question-label" for="question">1.</label>
+          <input
+            id="first-question"
+            class="add-question-input"
+          />
+        </div>
+        <div class="flex-container-centered">
+          <button
+            id="add-btn"
+            class=""
+            onclick="addQuestion()"
+          >
+            Add Question
+          </button>
+          <button
+            id="del-btn"
+            class=""
+            onclick="deleteQuestion()"
+          >
+            Delete Question
+          </button>
+        </div>
+        <fieldset id="questions-about-user-info-container">
+          <legend>Aspects followed in completing the form:</legend>
+
+          <div id="about-user-1">
+            <input type="checkbox" />
+            <label for="Age">Age</label>
+          </div>
+
+          <div id="about-user-2">
+            <input type="checkbox" />
+            <label for="Sex">Sex</label>
+          </div>
+
+          <div id="about-user-3">
+            <input type="checkbox" />
+            <label for="Location">Location</label>
+          </div>
+
+          <div id="about-user-4">
+            <input type="checkbox" />
+            <label for="Occupation">Occupation</label>
+          </div>
+
+          <div id="about-user-5">
+            <input type="checkbox" />
+            <label for="Platform">Platform</label>
+          </div>
+
+          <div id="about-user-6">
+            <input type="checkbox" />
+            <label for="Relationship Status">Relationship Status</label>
+          </div>
+        </fieldset>
+        <div class="create-button" >
+          <button id="back-button" onclick="back()">Back</button>
+          <button id="create-button" onclick="create()">Create</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

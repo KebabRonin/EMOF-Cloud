@@ -1,0 +1,41 @@
+body {
+	background-color: #ECFFD4;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Montserrat, "Noto Sans Arabic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h2{
+	font-size: 1.7rem;
+}
+
+#content{
+	padding: 5rem 5% 5rem 5%;
+}
+.statistic{
+	height: 500px;
+	margin:0 auto;
+}
+
+.statistic > img{
+	width: auto;
+	max-width: 600px;
+	margin:0 auto;
+	display: block;
+}
+
+.flex-container-centered{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-shadow-effect{
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rounded-div{
+	border-radius: 25px;
+	background-color: #FFFFFF;
+}
+

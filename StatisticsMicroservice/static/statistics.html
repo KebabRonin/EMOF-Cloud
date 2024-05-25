@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Statistics</title>
+    <link rel="stylesheet" href="static/emof.css" />
+    <link rel="stylesheet" href="static/styles.css" />
+    <link rel="icon" href="icons/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+      <div class="landing-section-header">
+        <header
+          id="landing-header-id"
+          class="landing-header"
+          role="banner"
+          itemscope=""
+        >
+          <div class="landing-header-elements">
+            <a href="/admin/" class="logo-link">
+              <img alt="" src="icons/logo.png" class="logo_landing" />
+            </a>
+            <nav
+              id="landing-header_menu"
+              class="landing-header_menu landing-header_menu--microsite"
+              aria-label="Navigation"
+              data-translated="1"
+              itemscope=""
+            >
+              <ul
+                id="menu-landing-header_menu-left"
+                class="landing-header_menu-left"
+              >
+                <li
+                  id="menu-item-92366"
+                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92366"
+                >
+                  <a
+                    ><span class="your-formulars">Statistics</span></a
+                  >
+                </li>
+                <li
+                  id="menu-item-92365"
+                  class="back-button menu-item menu-item-type-custom menu-item-object-custom menu-item-92365"
+                >
+                  <a
+                  href="/admin/"
+                  data-tracking-id="sign-up-top-bar"
+                  itemprop="url"
+                  >Back</a
+                  >
+                </li>
+              </ul>
+              <ul class="landing-header_menu-right first-in-focus">
+                <li class="icon-before-nav">
+                  <a><span class="menu-item-text">${{{user_name}}}</span></a>
+                </li>
+                <li class="landing-button logout_button">
+                  <a href="/authentication/logout" itemprop="url">Log out</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+      </div>
+      <div id="content_body">
+        <div id="title">
+          Here's what people felt about the questions from <span id="form-name"></span>:
+        </div>
+        <div id="download">
+          <h2 id="downloadText">Download as:</h2>
+          <div class="button-container">
+            <button class="download-button" id="downloadHTMLButton">
+              <img src="icons\html.png" alt="">
+              HTML
+            </button>
+            <button class="download-button" id="downloadCSVButton">
+              <img src="icons\csv.png" alt="CSV Icon">
+              CSV
+            </button>
+            <button class="download-button" id="downloadJSONButton">
+              <img src="icons\json-file.png" alt="JSON Icon">
+              JSON
+            </button>
+          </div>
+        </div>
+        <div id="container">
+        </div>
+      </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="static/statistics.js"></script>
+  <script>fetchData('${{{id_form}}}')</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</html>

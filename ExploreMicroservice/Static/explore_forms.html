@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Explore</title>
+    <link rel="stylesheet" type="text/css" href="/explore/emof.css" />
+    <link rel="stylesheet" type="text/css" href="/explore/explore_forms.css" />
+    <link rel="icon" href="/explore/pictures/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class="landing-section-header">
+      <header id="landing-header-id" class="landing-header" role="banner">
+        <div class="landing-header-elements">
+          <a href="/admin" class="logo-link">
+            <img alt="" src="/explore/pictures/logo.png" class="logo_landing" />
+          </a>
+          <nav
+            id="landing-header_menu"
+            class="landing-header_menu landing-header_menu--microsite"
+            aria-label="Navigation"
+            data-translated="1"
+          >
+            <ul
+              id="menu-landing-header_menu-left"
+              class="landing-header_menu-left"
+            >
+              <li
+                id="menu-item-92366"
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92366"
+              >
+                <a
+                  href="/admin"
+                  data-tracking-id="sign-in-top-bar"
+                  itemprop="url"
+                  ><span class="menu-item-text">Your Forms</span></a
+                >
+              </li>
+              <li
+                id="menu-item-92362"
+                class="mobile-hide menu-item menu-item-type-custom menu-item-object-custom menu-item-92362"
+              >
+                <a href="/explore" itemprop="url"
+                  ><span class="explore-button">Explore Forms</span></a
+                >
+              </li>
+              <li
+                id="menu-item-92365"
+                class="landing-button menu-item menu-item-type-custom menu-item-object-custom menu-item-92365"
+              >
+                <a
+                  href="/admin-forms-microservice/index.html"
+                  data-tracking-id="sign-up-top-bar"
+                  itemprop="url"
+                  >Create a new form</a
+                >
+              </li>
+            </ul>
+            <ul class="landing-header_menu-right first-in-focus">
+              <li class="icon-before-nav">
+                <a><span class="menu-item-text">${{{user_name}}}</span></a>
+              </li>
+              <li class="landing-button logout_button">
+                <a href="/authentication/logout" id="logout-btn" itemprop="url">Log out</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <div id="explore-main">
+      <div id="intro-banner">
+        <h1>Take part in forms open to the public!</h1>
+      </div>
+      <div id="section-list">
+      </div>
+    </div>
+    <script src="/explore/explore_forms.js"></script>
+  </body>
+</html>

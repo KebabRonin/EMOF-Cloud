@@ -1,0 +1,10 @@
+{
+	"liveServer.settings.port": 5501,
+	"python.analysis.extraPaths": [
+		"./Helpers"
+	],
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.autopep8"
+	},
+	"python.formatting.provider": "none"
+}

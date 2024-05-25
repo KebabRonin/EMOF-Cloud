@@ -1,0 +1,482 @@
+openapi: 3.1.0
+info:
+  title: EMOF - OpenAPI 3.1
+  description: |-
+    This is the API associated with the EMOF Project: A way to gather public sentiment regarding different topics.
+  contact:
+    email: stefaneduard2002@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://https://emof.azurewebsites.net/
+tags:
+  - name: forms
+    description: User-facing form interface
+  - name: admin
+    description: Administration of forms
+  - name: hub
+    description: General hub for discovering public forms
+paths:
+  /explore-api/popular:
+    get:
+      tags:
+        - hub
+      summary: Get popular forms
+      description: Get a list of popular forms right now
+      operationId: getPopularForms
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FormExplore'
+  /explore-api/new:
+    get:
+      tags:
+        - hub
+      summary: Get new forms
+      description: Get a list of new forms
+      operationId: getNewForms
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FormExplore'
+  /authentication/login:
+    post:
+      tags:
+        - admin
+      summary: Log into a form admin account
+      description: If login data is correct, returns a SessionID to be set as a cookie in the client
+      operationId: authLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInfo'
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg2'
+        '400':
+          description: Error while authenticating, returns error message as string
+          content:
+            text/plain:
+  /authentication/signup:
+    post:
+      tags:
+        - admin
+      summary: Sign up a new form admin account
+      description: Creates a new user and logs in. Returns a SessionID to be set as a cookie in the client
+      operationId: authSignup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupInfo'
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg2'
+        '400':
+          description: Error while authenticating, returns error message as string
+          content:
+            text/plain:
+  /authentication/logout:
+    get:
+      tags:
+        - admin
+      summary: Log out of a form admin account
+      description: Takes SessionId cookie and invalidates it
+      operationId: authLogout
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg2'
+  /admin-api/forms/{form-id}:
+    parameters:
+      - name: form-id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      tags:
+        - admin
+      summary: Updates a Form Metadata
+      description: Updates an existing Form's metadata.
+      operationId: updateFormAdmin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchForm'
+      responses:
+        '403':
+          description: Not logged in
+        '200':
+          description: Successful operation
+        '302':
+          description: Invalid session id found. User must log in first.
+        '409':
+          description: Nothing to delete
+    delete:
+      tags:
+        - admin
+      summary: Deletes a Form Metadata
+      description: Deletes an existing Form.
+      operationId: deleteFormAdmin
+      responses:
+        '200':
+          description: Successful operation
+        '302':
+          description: Invalid session id found. User must log in first.
+        '409':
+          description: Nothing to delete
+  /admin-api/users/{user-id}/forms:
+    get:
+      tags:
+        - admin
+      summary: Get forms of a user
+      description: Get all forms of a user
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples: [1G3dsD-324ads]
+        - name: filter
+          description: The types of forms to display
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - draft
+              - active
+              - closed
+      responses:
+        '403':
+          description: Not logged in
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+  /admin-forms-microservice/submit:
+    post:
+      tags:
+        - admin
+      summary: Create form
+      description: Creates a form with questions.
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/AAdminForm'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+        '403':
+          description: Not logged in
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+  /admin-forms-microservice/update:
+    put:
+      tags:
+        - admin
+      summary: Update form
+      description: Update form questions.
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/AAdminForm'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+        '400':
+          description: Resource could not be edited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+        '403':
+          description: User not authorised
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMsg'
+  /forms-microservice/{id}:
+    get:
+      tags:
+        - forms
+      summary: Get form data, questions
+      description: Returns data object, to be used to render form
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+        '400':
+          description: Form id empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+
+  /forms-microservice/submit/{id}:
+    post:
+      tags:
+        - forms
+      summary: Submit form response
+      description: Get user response to a form
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormResponse'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+        '400':
+          description: unsuccessful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMsg'
+
+components:
+  schemas:
+    ResponseMsg:
+      type: object
+      properties:
+        message:
+          type: string
+          examples: [Form activation successful]
+        status:
+          type: string
+          examples: [success]
+    ResponseMsg2:
+      type: object
+      properties:
+        result:
+          type: string
+          examples: [Success]
+        sessionId:
+          type: string
+          examples: [ufoihs-123hdsf]
+    LoginInfo:
+      type: object
+      properties:
+        emailUsername:
+          description: Email or username of the account
+          schema:
+            type: string
+        password:
+          description: Password of the account
+          schema:
+            type: string
+    SignupInfo:
+      type: object
+      properties:
+        email:
+          description: Email of the account
+          schema:
+            type: string
+        username:
+          description: Username of the account
+          schema:
+            type: string
+        password:
+          description: Password of the account
+          schema:
+            type: string
+    PatchForm:
+      type: object
+      properties:
+        status:
+          type: string
+          examples: [active, closed]
+          enum:
+            - active
+            - closed
+        public:
+          type: boolean
+    FormResponse:
+      type: object
+      description: Response to a form
+      properties:
+        duration:
+          type: string
+          description: Time taken to fill form, in seconds
+          examples: [150 seconds]
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              question:
+                type: string
+                description: question text
+                examples: [What do you think about the new Tesla?]
+              response:
+                type: string
+                description: question response
+                examples: [fear, apathy]
+    AdminForm:
+      type: object
+      description: sessionId is sent as a cookie
+      properties:
+        id:
+          type: string
+          examples: [fq6-lr6uuJW9iWsA]
+        id_creator:
+          type: string
+          examples: [fq6-lr6uuJW9iWsA]
+        name:
+          type: string
+          examples: [Birds]
+        created_at:
+          type: string
+          format: date-time
+          examples: [19-05-2024 12:45]
+        closed_at:
+          type: string
+          format: date-time
+          examples: [20-05-2024 12:45]
+        public:
+          type: boolean
+          description: Form access modifier (if public, form is discoverable in the hub)
+        questions:
+          type: array
+          format: object
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+            - Closed
+        published_at:
+          type: string
+          format: date-time
+          examples: [20-05-2024 12:45]
+        tags:
+          type: array
+          format: string
+          examples: [[vehicles], [music, games]]
+        image:
+          type: string
+          format: base64
+          examples: [data:image/jpeg;base64;efiyudzASDIUADSHkasdjafk435786F8DFS...]
+    AAdminForm:
+      type: object
+      description: sessionId is sent as a cookie
+      properties:
+        id:
+          type: string
+          examples: [fq6-lr6uuJW9iWsA]
+        name:
+          type: string
+          examples: [Birds]
+        description:
+          type: string
+          examples: [Birds are cool?]
+        ending:
+          type: string
+          examples: [Thx for your time]
+        questions:
+          type: array
+          format: object
+        tags:
+          type: array
+          format: string
+          examples: [[vehicles], [music, games]]
+        image:
+          type: string
+          format: base64
+          examples: [data:image/jpeg;base64;efiyudzASDIUADSHkasdjafk435786F8DFS...]
+    FormExplore:
+      type: object
+      properties:
+        id:
+          type: string
+          examples: [fq6-lr6uuJW9iWsA]
+        title:
+          type: string
+          examples: [Port Sulphur Band - The Sinner's Songbook]
+        image:
+          type: string
+          examples: [data:image/jpeg;base64;efiyudzASDIUADSHkasdjafk435786F8DFS...]
+        nr_questions:
+          type: integer
+          format: int32
+          examples: [5]
+        nr_responses:
+          type: integer
+          format: int32
+          examples: [512]
+        description:
+          type: string
+          examples: [What do you think about our newest album?]
+        author:
+          type: string
+          examples: [test-username]

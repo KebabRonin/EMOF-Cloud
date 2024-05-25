@@ -1,0 +1,120 @@
+<html lang="en" dir="ltr">
+  <head>
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="emof.css" />
+    <link rel="icon" href="icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="first_part">
+      <header class="header">
+        <nav class="nav">
+          <a href="/authentication/"><img alt="" src="logo.png" class="logo" /></a>
+        </nav>
+      </header>
+    </div>
+    <main role="main" class="login_main">
+      <div class="login_position">
+        <div class="login_contur">
+          <div class="login_fereastra">
+            <section class="login_continut">
+              <h2 class="login_text">Log in</h2>
+              <div class="login__Username">
+                <form id="formular_login" class="login_formular" action="/login" method="post">
+                  <label for="username" class="username_text"
+                    >Username or email
+                  </label>
+                  <div class="login_caseta">
+                    <input
+                      type="text"
+                      id="username_or_email"
+                      class="caseta"
+                      dir="auto"
+                      name="username"
+                      aria-required="true"
+                      autocomplete="username"
+                      data-functional-selector="username-input-field__input"
+                      value=""
+                    />
+                  </div>
+                  <label for="password" class="password_text">Password</label>
+                  <div class="password_caseta">
+                    <input
+                      type="password"
+                      id="password"
+                      class="sc-fePcYi ePKGQV sc-hRYTmC kIeJEV styles__PasswordField-sc-12i1x7w-3 gcaSJR"
+                      dir="auto"
+                      aria-required="true"
+                      autocomplete="current-password"
+                      data-functional-selector="password-input-field__input"
+                      value=""
+                    />
+                    <div class="sc-hFNyKf hIINCz">
+                      <button
+                        id="show-password-btn"
+                        type="button"
+                        aria-label="Show password as plain text"
+                        draggable="false"
+                        class="sc-dERsgg jhEikp"
+                      >
+                        <span
+                          class="sc-eCssSg cAELPS sc-kIXaRb knQvsT"
+                          data-functional-selector="icon"
+                          style="
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 32px;
+                            height: 32px;
+                          "
+                          ><svg
+                            viewBox="0 0 32 32"
+                            focusable="false"
+                            stroke="none"
+                            stroke-width="0"
+                            aria-labelledby="label-5fd6939f-87a9-483a-8442-0fe1677e5f28"
+                            aria-hidden="true"
+                            class="sc-jSgupP kWFXVA"
+                          >
+                            <title
+                              id="label-5fd6939f-87a9-483a-8442-0fe1677e5f28"
+                            >
+                              Icon
+                            </title>
+                            <path
+                              d="M26.817,15.425 C26.633,15.162 22.222,9 16,9 C9.778,9 5.367,15.162 5.183,15.425 C4.939,15.77 4.939,16.231 5.183,16.576 C5.367,16.838 9.778,23 16,23 C22.222,23 26.633,16.838 26.817,16.576 C27.061,16.23 27.061,15.77 26.817,15.425 Z M16,21 C11.834,21 8.451,17.425 7.269,15.999 C8.448,14.573 11.82,11 16,11 C20.166,11 23.549,14.576 24.731,16.001 C23.552,17.428 20.18,21 16,21 Z M16,12 C13.794,12 12,13.795 12,16 C12,18.206 13.794,20 16,20 C18.206,20 20,18.206 20,16 C20,13.795 18.206,12 16,12 Z M16,18 C14.897,18 14,17.103 14,16 C14,14.898 14.897,14 16,14 C17.103,14 18,14.898 18,16 C18,17.103 17.103,18 16,18 Z"
+                              style="fill: rgb(110, 110, 110)"
+                            ></path></svg></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="login-btn">
+                    <button
+                      id="login-submit-btn"
+                      class="login_button"
+                      type="submit"
+                      data-functional-selector="sign-in-button"
+                    >
+                      Log in
+                    </button>
+                    <p id="login-error-message" style="margin-top: 15px;"></p>
+                  </div>
+                </form>
+              </div>
+              <p>
+                Don't have an account? Forgot password?
+                <a
+                  data-functional-selector="sign-up-link"
+                  aria-label="Don't have an account? Sign up"
+                  class="signup_text"
+                  href="signup.html"
+                  >Sign up</a
+                >
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="login.js"></script>
+  </body>
+</html>

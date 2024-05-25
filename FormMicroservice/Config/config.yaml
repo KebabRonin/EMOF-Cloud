@@ -1,0 +1,6 @@
+database:
+  host: emof-postgres-db-stp.postgres.database.azure.com
+  dbname: postgres
+  user: postgres
+  password: emof-database-pass-cloud-1
+  port: 5432
