@@ -46,13 +46,15 @@ class HtmlHandler:
 				<div id="wheel-container"> <canvas id="wheel-canvas"></canvas> </div>
 				<div>
 					<div id="howyoufeel-form-container">
-                        
-						<form id="howyoufeel-form"> 
-                        <div id="howyoufeel-header2" class="flex-container-centered drop-shadow-effect" style="display: flex;"> Express yourself in words
-						</div>
-                        <textarea
-						id="howyoufeel-textarea" class="flex-container-centered drop-shadow-effect"></textarea> </form>
-					</div>
+    <form id="howyoufeel-form">
+        <div id="howyoufeel-header2" class="flex-container-centered drop-shadow-effect" style="display: flex;">
+            Express yourself in words
+        </div>
+        <textarea id="howyoufeel-textarea" class="flex-container-centered drop-shadow-effect"></textarea>
+        <button type="button" id="submit-button" class="flex-container-centered drop-shadow-effect">Describe what I feel</button>
+    </form>
+</div>
+
 					<div id="howyoufeel-container" class="rounded-div drop-shadow-effect">
 						<div id="howyoufeel-header" class="flex-container-centered drop-shadow-effect"> What you feel
 						</div>

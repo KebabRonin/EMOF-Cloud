@@ -802,3 +802,37 @@ function back() {
 
   console.log(pageCounter);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const textarea = document.getElementById("howyoufeel-textarea");
+  const submitButton = document.getElementById("submit-button");
+
+  submitButton.addEventListener("click", () => {
+      const text = textarea.value;
+      sendTextToAPI(text);
+  });
+});
+
+function sendTextToAPI(text) {
+  const apiUrl = "https://api-gateway-function-lvaky76gmq-uc.a.run.app"; // Replace with your API endpoint
+  const data = {
+      text: text
+  };
+
+  fetch(apiUrl, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log("Success:", data);
+      alert(`Your emotion is: ${data.emotion}`);
+  })
+  .catch(error => {
+      console.error("Error:", error);
+  });
+}
+

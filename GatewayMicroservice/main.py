@@ -146,7 +146,7 @@ class GatewayRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(b'Service not found')
 
 import os
-PORT = int(os.environ['PORT'])
+PORT = int(os.environ.get('PORT', 8050))
 
 with ThreadingHTTPServer(("", PORT), GatewayRequestHandler) as httpd:
     print("Gateway service running at port", PORT)
