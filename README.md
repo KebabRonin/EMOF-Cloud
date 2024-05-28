@@ -2,8 +2,6 @@
 ## For  EMOF
 Prepared by Brassat Alexandru, Cojocaru George, Popa Stefan, Rusu Vlad
 
-Link-ul videoclipului: https://youtu.be/FASqCQmM0mc
-
 Table of Contents
 =================
   * [Introduction](#1-introduction)
