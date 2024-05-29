@@ -99,14 +99,14 @@ function displayForm(form) {
       launchButton = document.createElement('a');
       launchButton.classList.add("emphasised-button")
       launchButton.classList.add("button")
-      launchButton.innerText = "Launch"; 
+      launchButton.innerText = "Launch";
       launchButton.addEventListener("click",((form_id) => function (){launchForm(form_id)})(form.id));
       buttons.appendChild(launchButton);
-      
+
       editButton = document.createElement('a');
       editButton.classList.add("active-button")
       editButton.classList.add("button")
-      editButton.innerText = "Edit"; 
+      editButton.innerText = "Edit";
       editButton.addEventListener("click",((form_id) => function (){editForm(form_id)})(form.id));
       buttons.appendChild(editButton);
 
@@ -125,13 +125,13 @@ function displayForm(form) {
       viewButton = document.createElement('a');
       viewButton.classList.add("unselectable-button")
       viewButton.classList.add("button")
-      viewButton.innerText = "View Statistics"; 
+      viewButton.innerText = "View Statistics";
       buttons.appendChild(viewButton);
 
       deleteButton = document.createElement('a');
       deleteButton.classList.add("delete-button")
       deleteButton.classList.add("button")
-      deleteButton.innerText = "Delete"; 
+      deleteButton.innerText = "Delete";
       deleteButton.addEventListener("click",((form_id) => function (){deleteForm(form_id)})(form.id));
       buttons.appendChild(deleteButton);
     }
@@ -204,10 +204,10 @@ function displayForm(form) {
       closeButton = document.createElement('a');
       closeButton.classList.add("emphasised-button")
       closeButton.classList.add("button")
-      closeButton.innerText = "Close"; 
+      closeButton.innerText = "Close";
       closeButton.addEventListener("click",((form_id) => function (){closeForm(form_id)})(form.id));
       buttons.appendChild(closeButton);
-      
+
       shareButton = document.createElement('a');
       shareButton.classList.add("active-button")
       shareButton.classList.add("button")
@@ -230,13 +230,13 @@ function displayForm(form) {
       viewButton = document.createElement('a');
       viewButton.classList.add("unselectable-button")
       viewButton.classList.add("button")
-      viewButton.innerText = "View Statistics"; 
+      viewButton.innerText = "View Statistics";
       buttons.appendChild(viewButton);
 
       deleteButton = document.createElement('a');
       deleteButton.classList.add("delete-button")
       deleteButton.classList.add("button")
-      deleteButton.innerText = "Delete"; 
+      deleteButton.innerText = "Delete";
       deleteButton.addEventListener("click",((form_id) => function (){deleteForm(form_id)})(form.id));
       buttons.appendChild(deleteButton);
     }
@@ -312,14 +312,14 @@ function displayForm(form) {
       viewButton = document.createElement('a');
       viewButton.classList.add("emphasised-button")
       viewButton.classList.add("button")
-      viewButton.innerText = "View Statistics"; 
+      viewButton.innerText = "View Statistics";
       viewButton.addEventListener("click",((form_id) => function (){statsForm(form_id)})(form.id));
       buttons.appendChild(viewButton);
 
       deleteButton = document.createElement('a');
       deleteButton.classList.add("delete-button")
       deleteButton.classList.add("button")
-      deleteButton.innerText = "Delete"; 
+      deleteButton.innerText = "Delete";
       deleteButton.addEventListener("click",((form_id) => function (){deleteForm(form_id)})(form.id));
       buttons.appendChild(deleteButton);
     }
@@ -418,8 +418,8 @@ function closeForm(form_id) {
   popup_confirm("Are you sure you want to close the Form?", (
     (formId) => function() {
       fetch(`/admin/admin-api/forms/${encodeURIComponent(form_id)}`,{
-              method:'PATCH', 
-              headers: {'Content-Type': 'application/json'}, 
+              method:'PATCH',
+              headers: {'Content-Type': 'application/json'},
               body:JSON.stringify({status:'closed'})}
       ).then(response => {
           if(response.status == 200) {
@@ -460,7 +460,7 @@ function statsForm(form_id) {
 }
 async function shareForm(form_id) {
   //await navigator.clipboard.writeText("127.0.0.1:8050/forms-microservice/" + encodeURIComponent(escapeHtml(form_id)) + ".html");
-  await navigator.clipboard.writeText("/forms-microservice/" + encodeURIComponent(escapeHtml(form_id)) + ".html");
+  await navigator.clipboard.writeText("https://emof.azurewebsites.net/forms-microservice/" + encodeURIComponent(escapeHtml(form_id)) + ".html");
   alert("Copied link to clipboard!");
 }
 displayAllForms()
